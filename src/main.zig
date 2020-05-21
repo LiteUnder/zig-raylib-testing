@@ -77,7 +77,7 @@ pub fn main() anyerror!void {
             DrawTexturePro(sprite, src_rec, dest_rec, origin, rotation, WHITE);
             
             DrawFPS(10, 10);
-            DrawText("Press 'T' to T H I C C E N", 10, 30, 20, DARKGRAY);
+            DrawText("Press t to thicc", 10, 30, 20, DARKGRAY);
 
         EndDrawing();
     }
