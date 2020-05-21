@@ -42,7 +42,7 @@ pub fn main() anyerror!void {
     var rotation: f32 = 0.0;
 
     // tick rate is 60 times per second
-    // 16.66666... ms or 0.016667 seconds
+    // frame time 16.66666 ms or 0.016667 seconds
     var delta_time: f32 = 0.0;
     const target_frame_time = 0.016667;
 
@@ -53,10 +53,15 @@ pub fn main() anyerror!void {
 
         delta_time = GetFrameTime()/target_frame_time;
 
+        // movement
         if (IsKeyDown(KeyboardKey.KEY_A)) dest_rec.x -= speed*delta_time;
         if (IsKeyDown(KeyboardKey.KEY_D)) dest_rec.x += speed*delta_time;
         if (IsKeyDown(KeyboardKey.KEY_W)) dest_rec.y -= speed*delta_time;
         if (IsKeyDown(KeyboardKey.KEY_S)) dest_rec.y += speed*delta_time;
+
+        // rotation
+        if (IsKeyDown(KeyboardKey.KEY_Q)) rotation -= 2.5*delta_time;
+        if (IsKeyDown(KeyboardKey.KEY_E)) rotation += 2.5*delta_time;
 
         // thicc
         if (IsKeyDown(KeyboardKey.KEY_T)) {
@@ -77,7 +82,9 @@ pub fn main() anyerror!void {
             DrawTexturePro(sprite, src_rec, dest_rec, origin, rotation, WHITE);
             
             DrawFPS(10, 10);
-            DrawText("Press t to thicc", 10, 30, 20, DARKGRAY);
+            DrawText("use wasd to move", 10, 30, 20, DARKGRAY);
+            DrawText("use q/e to rotate", 10, 50, 20, DARKGRAY);
+            DrawText("hold t to thicc", 10, 70, 20, DARKGRAY);
 
         EndDrawing();
     }
