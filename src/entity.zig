@@ -109,4 +109,8 @@ pub const Entity = struct {
             tint,
         );
     }
+
+    pub fn deinit(self: *Entity) void {
+        UnloadTexture(self.sprite);
+    }
 };
